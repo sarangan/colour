@@ -62,6 +62,12 @@ select.form-control, textarea.form-control, input[type="text"].form-control, inp
 	font-size: 12px;
 	height: 30px;
 }
+
+.input-group-sm>.input-group-addon{
+	border: none;
+	background-color: #FFFFFF;
+}
+
 /* Fix some bootstrap issues */
 span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
 	display: inline;
@@ -606,9 +612,9 @@ footer h5 {
 	background-color: #df5c39;
 }
 .btn-link {
-	border-color: rgba(0, 0, 0, 0);
+	border: none;
 	cursor: pointer;
-	color: #23A1D1;
+	color: #000000;
 	border-radius: 0;
 }
 .btn-link, .btn-link:active, .btn-link[disabled] {
