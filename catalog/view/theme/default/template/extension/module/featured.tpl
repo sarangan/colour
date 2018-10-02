@@ -7,10 +7,31 @@
 
       <div class="product-overlay">
 
+        <a class="product-overlay-link-wrapper" href="<?php echo $product['href']; ?>">
+
           <div class="product-text">
             <a href="<?php echo $product['href']; ?>" class="overlay-product-title"><?php echo $product['name']; ?></a>
             <br/>
-            <?php echo $product['description']; ?></div>
+            <?php echo $product['description']; ?>
+
+            <br/>
+            <?php if ($product['price']) { ?>
+            <p class="price">
+              <?php if (!$product['special']) { ?>
+              <span class="overlay-product-price"><?php echo $product['price']; ?></span>
+              <?php } else { ?>
+              <span class="overlay-product-price"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
+              <?php } ?>
+              <?php if ($product['tax']) { ?>
+              <span class="overlay-product-price"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span>
+              <?php } ?>
+            </p>
+            <?php } ?>
+
+          </div>
+
+        </a>
+
       </div>
 
       <div class="caption">
