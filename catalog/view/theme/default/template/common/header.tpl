@@ -51,12 +51,12 @@ function toggleSearch(){
 <body class="<?php echo $class; ?>">
 <nav id="top">
   <div class="container">
-      <span class="top-bar-text hidden-xs hidden-sm hidden-md">FREE SHIPPING OVER SGD200</span>
+      <span class="top-bar-text hidden-xs">FREE SHIPPING OVER SGD200</span>
     <div id="top-links" class="nav pull-right">
       <ul class="list-inline">
-        <li><a href='#'><span class="top-bar-text hidden-xs hidden-sm hidden-md">FACEBOOK</span></a></li>
-        <li><span class="top-bar-text hidden-xs hidden-sm hidden-md">|</span></li>
-        <li><a href='#'><span class="top-bar-text hidden-xs hidden-sm hidden-md">INSTAGRAM</span></a></li>
+        <li><a href='#'><span class="top-bar-text">FACEBOOK</span></a></li>
+        <li><span class="top-bar-text hidden-xs">|</span></li>
+        <li><a href='#'><span class="top-bar-text">INSTAGRAM</span></a></li>
       </ul>
     </div>
   </div>

@@ -1,7 +1,7 @@
 body {
 	font-family: 'Montserrat', sans-serif;
-	font-weight: 400;
-	color: #666;
+	/* font-weight: 400; */
+	color: #000000;
 	font-size: 12px;
 	line-height: 20px;
 	width: 100%;
@@ -61,6 +61,7 @@ select.form-control, textarea.form-control, input[type="text"].form-control, inp
 .input-group .input-group-addon {
 	font-size: 12px;
 	height: 30px;
+	padding: 0;
 }
 
 .input-group-sm>.input-group-addon{
@@ -289,7 +290,7 @@ div.required .control-label:before {
 	/* text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); */
 	padding: 10px 15px 10px 15px;
 	min-height: 15px;
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: 500;
 	background-color: #ffffff;
 	/* background-color: transparent; */
@@ -303,9 +304,9 @@ div.required .control-label:before {
 	content: '\2304';
 	padding: 2px;
 	position: absolute;
-  top: 7px;
+  top: 5px;
   right: -2px;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 #menu .dropdown-menu {
@@ -468,13 +469,17 @@ footer h5 {
 .footer-bottom-wrapper{
 	padding: 3px 20px;
 	background-color: #ebebeb;
-	font-weight: 800;
 	font-size: 13px;
 	margin: 20px 0 10px;
 }
 
+.footer-bottom-wrapper span{
+	font-weight: 800;
+}
+
 .footer-payment-icons i{
 	font-size: 20px;
+	font-weight: normal;
 }
 
 /* alert */
@@ -815,7 +820,7 @@ div.product-line{
 }
 
 ul.product-nav-tabs{
-	border: none;
+	/* border: none; */
 }
 
 .category-top-banner-wrapper{
@@ -1082,6 +1087,7 @@ h2.price {
 
 .filter-border{
 	border-bottom: 1px solid #000000;
+	padding: 0;
 }
 
 .filter-grey, .filter-grey label, .filter-grey #input-sort, .filter-grey #input-limit, .filter-grey a{

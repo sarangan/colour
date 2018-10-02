@@ -41,7 +41,7 @@
           <?php } ?>
           <ul class="nav nav-tabs product-nav-tabs">
             <?php if ($attribute_groups) { ?>
-            <li><a href="#tab-specification" data-toggle="tab"><?php echo $tab_attribute; ?></a></li>
+            <li class="active"><a href="#tab-specification" data-toggle="tab"><?php echo $tab_attribute; ?></a></li>
             <?php } ?>
             <?php if ($review_status) { ?>
             <li><a href="#tab-review" data-toggle="tab"><?php echo $tab_review; ?></a></li>
@@ -50,8 +50,8 @@
           <div class="tab-content">
             <!-- <div class="tab-pane active" id="tab-description"></div> -->
             <?php if ($attribute_groups) { ?>
-            <div class="tab-pane" id="tab-specification">
-              <table class="table table-bordered">
+            <div class="tab-pane active" id="tab-specification">
+              <table class="table">
                 <?php foreach ($attribute_groups as $attribute_group) { ?>
                 <thead>
                   <tr>
@@ -150,7 +150,7 @@
             <?php } ?>
             <?php if ($discounts) { ?>
             <li>
-              <hr>
+              
             </li>
             <?php foreach ($discounts as $discount) { ?>
             <li><?php echo $discount['quantity']; ?><?php echo $text_discount; ?><?php echo $discount['price']; ?></li>
@@ -279,7 +279,7 @@
             <?php } ?>
             <?php } ?>
             <?php if ($recurrings) { ?>
-            <hr>
+
             <h3><?php echo $text_payment_recurring; ?></h3>
             <div class="form-group required">
               <select name="recurring_id" class="form-control">
@@ -338,7 +338,7 @@
               <?php } ?>
               <?php } ?>
               <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;"><?php echo $reviews; ?></a> / <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;"><?php echo $text_write; ?></a></p>
-            <hr>
+
             <!-- AddThis Button BEGIN -->
             <div class="addthis_toolbox addthis_default_style" data-url="<?php echo $share; ?>"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> <a class="addthis_button_tweet"></a> <a class="addthis_button_pinterest_pinit"></a> <a class="addthis_counter addthis_pill_style"></a></div>
             <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script>
