@@ -32,7 +32,7 @@
             </ul>
 
             <?php if ($thumb) { ?>
-              <div class="product-thumbnail-main-img-wrapper">
+              <div class="thumbnails product-thumbnail-main-img-wrapper">
                 <a class="thumbnail remove-product-thumbnail-border" href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
               </div>
             <?php } ?>
@@ -137,9 +137,8 @@
               <div class="product-price"><?php echo $price; ?></div>
             </li>
             <?php } else { ?>
-            <li><span style="text-decoration: line-through;"><?php echo $price; ?></span></li>
             <li>
-              <h2><?php echo $special; ?></h2>
+              <span class="product-price"><?php echo $special; ?></span><span style="font-size: 13px; font-weight: 700; margin-left: 10px; text-decoration: line-through; color:#888;"><?php echo $price; ?></span>
             </li>
             <?php } ?>
             <?php if ($tax) { ?>
@@ -150,7 +149,7 @@
             <?php } ?>
             <?php if ($discounts) { ?>
             <li>
-              
+
             </li>
             <?php foreach ($discounts as $discount) { ?>
             <li><?php echo $discount['quantity']; ?><?php echo $text_discount; ?><?php echo $discount['price']; ?></li>
@@ -298,7 +297,7 @@
               <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="form-control" />
               <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
               <br />
-              <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><?php echo $button_cart; ?></button>
+              <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block button-colour"><?php echo $button_cart; ?></button>
 
             </div>
 
@@ -315,15 +314,37 @@
           <div class="product-line"></div>
 
 
-          <ul class="list-unstyled">
+
+          <ul class="list-unstyled product-extra-text">
+
+            <?php if ($sku) { ?>
+            <li><?php echo $text_sku; ?> <?php echo $sku; ?></li>
+            <?php } ?>
+
+            <?php
+                $categories_text = '';
+                for($i=0, $l = count($categories); $i < $l; $i++) {
+                  $categories_text .= '<a href="' . $categories[$i]['href'] .'">'. $categories[$i]['text'] . '</a>';
+                  if($i != ($l-1) ){
+                    $categories_text .= ' | ';
+                  }
+                }
+            ?>
+
+            <li><?php echo $text_category . ' ' . $categories_text; ?></li>
+
             <?php if ($manufacturer) { ?>
             <li><?php echo $text_manufacturer; ?> <a href="<?php echo $manufacturers; ?>"><?php echo $manufacturer; ?></a></li>
             <?php } ?>
             <li><?php echo $text_model; ?> <?php echo $model; ?></li>
-            <?php if ($reward) { ?>
-            <li><?php echo $text_reward; ?> <?php echo $reward; ?></li>
-            <?php } ?>
+            <?php //if ($reward) { ?>
+            <!--li><?php //echo $text_reward; ?> <?php //echo $reward; ?></li-->
+            <?php //} ?>
             <li><?php echo $text_stock; ?> <?php echo $stock; ?></li>
+
+            <li>SHARE: <a class="product-social-btn" href="<?php echo 'https://www.facebook.com/sharer/sharer.php?u=' . $share; ?>" target="_blank"><i class="fab fa-facebook-f"></i></a>
+              <a class="product-social-btn" href="<?php echo 'mailto:https://www.facebook.com/sharer/sharer.php?u=' . $share; ?>" target="_top"><i class="far fa-envelope"></i></a>
+            </li>
           </ul>
 
 
@@ -359,12 +380,41 @@
         <?php } else { ?>
         <?php $class = 'col-xs-6 col-sm-3'; ?>
         <?php } ?>
-        <div class="<?php echo $class; ?>">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
           <div class="product-thumb transition">
             <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
+
+            <div class="product-overlay">
+
+              <a class="product-overlay-link-wrapper" href="<?php echo $product['href']; ?>">
+
+                <div class="product-text">
+                  <a href="<?php echo $product['href']; ?>" class="overlay-product-title"><?php echo $product['name']; ?></a>
+                  <br/>
+                  <?php echo $product['description']; ?>
+
+                  <br/>
+                  <?php if ($product['price']) { ?>
+                  <p class="price">
+                    <?php if (!$product['special']) { ?>
+                    <span class="overlay-product-price"><?php echo $product['price']; ?></span>
+                    <?php } else { ?>
+                    <span class="overlay-product-price"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
+                    <?php } ?>
+                    <?php if ($product['tax']) { ?>
+                    <span class="overlay-product-price"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span>
+                    <?php } ?>
+                  </p>
+                  <?php } ?>
+
+                </div>
+
+              </a>
+            </div>
+
             <div class="caption">
               <h4><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>
-              <p><?php echo $product['description']; ?></p>
+
               <?php if ($product['rating']) { ?>
               <div class="rating">
                 <?php for ($j = 1; $j <= 5; $j++) { ?>
@@ -392,7 +442,7 @@
             <div class="button-group">
               <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span> <i class="fa fa-shopping-cart"></i></button>
               <button type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i></button>
-              <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-exchange"></i></button>
+              <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fas fa-exchange-alt"></i></button>
             </div>
           </div>
         </div>

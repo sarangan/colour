@@ -19,3 +19,10 @@
   <?php } ?>
   <?php } ?>
 </div>
+
+<div class="sidebar-category-title-wrapper">
+  <span class="sidebar-category-title">Filter by</span>
+</div>
+<div class="list-group">
+  <a href="<?php echo $brand_url; ?>" class="list-group-item active">Brands</a>
+</div>

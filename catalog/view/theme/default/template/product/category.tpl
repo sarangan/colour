@@ -2,7 +2,7 @@
 <div class="container">
 
   <div class="category-top-banner-wrapper">
-    <h2 class="category-top-title"><?php echo $heading_title; ?></h2>
+    <h1 class="category-top-title"><?php echo $heading_title; ?></h1>
   </div>
 
   <?php if ($thumb || $description) { ?>
@@ -11,7 +11,7 @@
     <div><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" class="img-category-banner" /></div>
     <?php } ?>
     <?php if ($description) { ?>
-    <div class="col-sm-10"><?php echo $description; ?></div>
+    <div class="col-sm-12"><?php echo $description; ?></div>
     <?php } ?>
   </div>
 
@@ -27,7 +27,7 @@
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
 
-      <?php if ($categories) { ?>
+      <?php if ($categories && false) { ?>
       <h3><?php echo $text_refine; ?></h3>
       <?php if (count($categories) <= 5) { ?>
       <div class="row">
@@ -53,6 +53,7 @@
       </div>
       <?php } ?>
       <?php } ?>
+
       <?php if ($products) { ?>
       <div class="row">
         <!-- <div class="col-md-2 col-sm-6 hidden-xs">

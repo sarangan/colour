@@ -6,6 +6,7 @@ class ControllerProductProduct extends Controller {
 		$this->load->language('product/product');
 
 		$data['breadcrumbs'] = array();
+		$data['categories'] = array();
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
@@ -35,6 +36,12 @@ class ControllerProductProduct extends Controller {
 						'text' => $category_info['name'],
 						'href' => $this->url->link('product/category', 'path=' . $path)
 					);
+
+					$data['categories'][] = array(
+						'text' => $category_info['name'],
+						'href' => $this->url->link('product/category', 'path=' . $path)
+					);
+
 				}
 			}
 
@@ -64,6 +71,12 @@ class ControllerProductProduct extends Controller {
 					'text' => $category_info['name'],
 					'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url)
 				);
+
+				$data['categories'][] = array(
+					'text' => $category_info['name'],
+					'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url)
+				);
+
 			}
 		}
 
@@ -230,6 +243,8 @@ class ControllerProductProduct extends Controller {
 			$data['text_manufacturer'] = $this->language->get('text_manufacturer');
 			$data['text_model'] = $this->language->get('text_model');
 			$data['text_reward'] = $this->language->get('text_reward');
+			$data['text_sku'] = $this->language->get('text_sku');
+			$data['text_category'] = $this->language->get('text_category');
 			$data['text_points'] = $this->language->get('text_points');
 			$data['text_stock'] = $this->language->get('text_stock');
 			$data['text_discount'] = $this->language->get('text_discount');
@@ -268,6 +283,7 @@ class ControllerProductProduct extends Controller {
 			$data['manufacturers'] = $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $product_info['manufacturer_id']);
 			$data['model'] = $product_info['model'];
 			$data['reward'] = $product_info['reward'];
+			$data['sku'] = $product_info['sku'];
 			$data['points'] = $product_info['points'];
 			$data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
 

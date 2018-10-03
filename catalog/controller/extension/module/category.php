@@ -23,6 +23,8 @@ class ControllerExtensionModuleCategory extends Controller {
 			$data['child_id'] = 0;
 		}
 
+		$data['brand_url'] = $this->url->link('product/manufacturer');
+
 		$this->load->model('catalog/category');
 
 		$this->load->model('catalog/product');
