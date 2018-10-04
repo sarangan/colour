@@ -33,6 +33,29 @@
 
             <?php if ($thumb) { ?>
               <div class="thumbnails product-thumbnail-main-img-wrapper">
+                <?php if ($special) { ?>
+                  <span class="product-label label-sale">Sale</span>
+                <?php }?>
+
+                <?php
+                      if ( $date_added ) {
+                        $dStart = new DateTime($date_added);
+                        $dEnd  = new DateTime(date("Y-m-d H:i:s"));
+                        $dDiff = $dStart->diff($dEnd);
+
+                        if($dDiff->days < 14 ){ // two weeks time
+                          if(!$special){
+                            echo '<span class="product-label label-new">New</span>';
+                          }
+                          else{
+                            echo '<span class="product-label label-new got-sale-label">New</span>';
+                          }
+
+                        }
+
+                      }
+                ?>
+
                 <a class="thumbnail remove-product-thumbnail-border" href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
               </div>
             <?php } ?>

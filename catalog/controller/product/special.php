@@ -63,7 +63,7 @@ class ControllerProductSpecial extends Controller {
 			'href' => $this->url->link('product/special', $url)
 		);
 
-		$data['heading_title'] = $this->language->get('heading_title');
+		$data['heading_title'] = 'Promotions';
 
 		$data['text_empty'] = $this->language->get('text_empty');
 		$data['text_quantity'] = $this->language->get('text_quantity');
@@ -139,6 +139,7 @@ class ControllerProductSpecial extends Controller {
 				'tax'         => $tax,
 				'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
 				'rating'      => $result['rating'],
+				'date_added'  => $result['date_added'],
 				'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url)
 			);
 		}

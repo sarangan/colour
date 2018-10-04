@@ -3,6 +3,30 @@
   <?php foreach ($products as $product) { ?>
   <div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
     <div class="product-thumb transition">
+
+      <?php if ($product['special']) { ?>
+        <span class="product-label label-sale">Sale</span>
+      <?php }?>
+
+      <?php
+            if ( $product['date_added'] ) {
+              $dStart = new DateTime($product['date_added']);
+              $dEnd  = new DateTime(date("Y-m-d H:i:s"));
+              $dDiff = $dStart->diff($dEnd);
+
+              if($dDiff->days < 14 ){ // two weeks time
+                if(!$product['special']){
+                  echo '<span class="product-label label-new">New</span>';
+                }
+                else{
+                  echo '<span class="product-label label-new got-sale-label">New</span>';
+                }
+
+              }
+
+            }
+      ?>
+
       <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
 
       <div class="product-overlay">

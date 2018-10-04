@@ -87,7 +87,29 @@ function toggleSearch(){
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav">
-        <?php foreach ($categories as $category) { ?>
+
+        <li><a href="<?php echo $link_new_arrivals; ?>">New arrivals</a></li>
+
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Products</a>
+
+          <div class="dropdown-menu">
+            <div class="dropdown-inner">
+              <ul class="list-unstyled">
+                <?php foreach ($categories as $category) { ?>
+                  <?php if (!$category['children']) { ?>
+                    <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+                  <?php }
+                } ?>
+              </ul>
+            </div>
+        </li>
+
+        <li><a href="<?php echo $textbook_fullset; ?>">Textbook</a></li>
+        <li><a href="<?php echo $link_promotions; ?>">Promotions</a></li>
+        <li><a href="<?php echo $link_promotions; ?>">Gallery</a></li>
+
+        <?php if(false){ ?>
+        <?php foreach ($categories as $category ) { ?>
         <?php if ($category['children']) { ?>
         <li class="dropdown"><a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category['name']; ?></a>
           <div class="dropdown-menu">
@@ -106,6 +128,10 @@ function toggleSearch(){
         <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
         <?php } ?>
         <?php } ?>
+
+        <?php } ?>
+
+
       </ul>
 
       <div class="top-action-menu"><img src="image/catalog/images/menu-search.png" class="menu-search-icon"  onclick="toggleSearch()"/>
