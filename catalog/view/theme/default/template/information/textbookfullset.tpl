@@ -100,10 +100,9 @@
             <?php foreach ($products as $product) { ?>
               <tr>
                 <td>check</td>
-                <td><?php echo $product['jan']; ?></td>
-                <td><?php echo $product['location']; ?></td>
+                <td><?php echo $product['subject']; ?></td>
                 <td><?php echo $product['name']; ?></td>
-                <td><?php echo $product['mpn']; ?></td>
+                <td><?php echo $product['publisher']; ?></td>
                 <td>
                 <?php if ($product['price']) { ?>
                 <p class="price">
@@ -121,7 +120,7 @@
               </tr>
             <?php } ?>
           </tbody>
-  
+
         </table>
 
 

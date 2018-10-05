@@ -98,7 +98,7 @@ class ControllerInformationTextbookfullset extends Controller {
         $data['input_stream'] = $input_stream;
 
         $data['products'] = array();
-        
+
         $results = $this->model_catalog_textbookfullset->getProducts($input_school, $input_level, $input_stream);
 
         foreach ($results as $result) {
@@ -144,7 +144,8 @@ class ControllerInformationTextbookfullset extends Controller {
     				'rating'      => $result['rating'],
     				'date_added'  => $result['date_added'],
             'publisher'  => $result['mpn'],
-    				'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url)
+            'subject'  => $result['location'],
+    				'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])
     			);
     		}
 
