@@ -290,8 +290,11 @@ div.required .control-label:before {
 	border-bottom: 1px solid #000000;
 }
 #menu.navbar{
-	margin-bottom: 0;
 	border-radius: 0;
+}
+
+.common-home #menu.navbar{
+	margin-bottom: 0;
 }
 
 #menu .nav > li > a {
@@ -1191,4 +1194,12 @@ a.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus, 
 
 .navbar-collapse{
 	padding: 0;
+}
+
+.no-radious{
+	border-radius: 0;
+}
+
+.div-extra-wrapper{
+	margin: 20px 0;
 }
