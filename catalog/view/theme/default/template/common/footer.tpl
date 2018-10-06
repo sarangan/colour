@@ -26,9 +26,11 @@
           <div class="col-sm-4">
             <h5><?php //echo $text_account; ?></h5>
             <ul class="list-unstyled">
-              <!--li class="footer-txt-block"><a href="<?php //echo $order; ?>"><?php //echo $text_order; ?></a></li-->
 
               <li class="footer-txt-block"><a href="<?php echo $newsletter; ?>"><?php echo $text_newsletter; ?></a></li>
+                <li class="footer-txt-block"><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
+                <li  class="footer-txt-block"><a href="<?php echo $manufacturer; ?>"><?php echo $text_manufacturer; ?></a></li>
+                <li  class="footer-txt-block"><a href="<?php echo $special; ?>"><?php echo $text_special; ?></a></li>
             </ul>
           </div>
         </div>

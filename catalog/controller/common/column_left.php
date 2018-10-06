@@ -19,7 +19,7 @@ class ControllerCommonColumnLeft extends Controller {
 			$layout_id = $this->model_catalog_category->getCategoryLayoutId(end($path));
 		}
 
-		if ($route == 'information/newarrivals' ||  $route == 'product/special' ) {
+		if ($route == 'information/newarrivals' ||  $route == 'product/special' ||  $route == 'information/material' ) {
 			$this->load->model('catalog/category');
 
 			$layout_id = 3;

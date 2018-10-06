@@ -9,11 +9,11 @@ class ControllerInformationTextbookfullset extends Controller {
         //     $this->response->redirect($this->url->link('account/login', '', 'SSL'));
         // }
 
-        $this->load->model('catalog/textbookfullset');
+        $this->load->model('catalog/material');
         $this->load->model('tool/image');
         // $this->load->model('catalog/product');
 
-        $this->document->setTitle($this->language->get('heading_title'));
+        $this->document->setTitle('Textbook Full Set');
 
         $data['heading_title'] = 'Textbook Full Set';
 
@@ -31,7 +31,7 @@ class ControllerInformationTextbookfullset extends Controller {
   			$data['header'] = $this->load->controller('common/header');
 
 
-        $results_schools = $this->model_catalog_textbookfullset->getSchools();
+        $results_schools = $this->model_catalog_material->getSchools();
 
         $data['schools']= array();
 
@@ -43,7 +43,7 @@ class ControllerInformationTextbookfullset extends Controller {
           );
         }
 
-        $results_levels = $this->model_catalog_textbookfullset->getLevels();
+        $results_levels = $this->model_catalog_material->getLevels();
 
         $data['levels']= array();
 
@@ -56,7 +56,7 @@ class ControllerInformationTextbookfullset extends Controller {
         }
 
 
-        $results_streams = $this->model_catalog_textbookfullset->getStreams();
+        $results_streams = $this->model_catalog_material->getStreams();
 
         $data['streams']= array();
 
@@ -99,57 +99,65 @@ class ControllerInformationTextbookfullset extends Controller {
 
         $data['products'] = array();
 
-        $results = $this->model_catalog_textbookfullset->getProducts($input_school, $input_level, $input_stream);
+        if( !empty($input_school) || !empty($input_level) || !empty($input_stream) ){
 
-        foreach ($results as $result) {
-    			if ($result['image']) {
-    				$image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
-    			} else {
-    				$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
-    			}
 
-    			if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
-    				$price = $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-    			} else {
-    				$price = false;
-    			}
+            $results = $this->model_catalog_material->getProducts($input_school, $input_level, $input_stream);
 
-    			if ((float)$result['special']) {
-    				$special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-    			} else {
-    				$special = false;
-    			}
+            foreach ($results as $result) {
+        			if ($result['image']) {
+        				$image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+        			} else {
+        				$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+        			}
 
-    			if ($this->config->get('config_tax')) {
-    				$tax = $this->currency->format((float)$result['special'] ? $result['special'] : $result['price'], $this->session->data['currency']);
-    			} else {
-    				$tax = false;
-    			}
+        			if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
+        				$price = $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+        			} else {
+        				$price = false;
+        			}
 
-    			if ($this->config->get('config_review_status')) {
-    				$rating = (int)$result['rating'];
-    			} else {
-    				$rating = false;
-    			}
+        			if ((float)$result['special']) {
+        				$special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+        			} else {
+        				$special = false;
+        			}
 
-    			$data['products'][] = array(
-    				'product_id'  => $result['product_id'],
-    				'thumb'       => $image,
-    				'name'        => $result['name'],
-    				'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get($this->config->get('config_theme') . '_product_description_length')) . '..',
-    				'price'       => $price,
-    				'special'     => $special,
-    				'tax'         => $tax,
-    				'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
-    				'rating'      => $result['rating'],
-    				'date_added'  => $result['date_added'],
-            'publisher'  => $result['mpn'],
-            'subject'  => $result['location'],
-    				'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])
-    			);
-    		}
+        			if ($this->config->get('config_tax')) {
+        				$tax = $this->currency->format((float)$result['special'] ? $result['special'] : $result['price'], $this->session->data['currency']);
+        			} else {
+        				$tax = false;
+        			}
+
+        			if ($this->config->get('config_review_status')) {
+        				$rating = (int)$result['rating'];
+        			} else {
+        				$rating = false;
+        			}
+
+        			$data['products'][] = array(
+        				'product_id'  => $result['product_id'],
+        				'thumb'       => $image,
+        				'name'        => $result['name'],
+        				'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get($this->config->get('config_theme') . '_product_description_length')) . '..',
+        				'price'       => $price,
+        				'special'     => $special,
+        				'tax'         => $tax,
+        				'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
+        				'rating'      => $result['rating'],
+        				'date_added'  => $result['date_added'],
+                'publisher'  => $result['mpn'],
+                'subject'  => $result['location'],
+        				'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])
+        			);
+        		}
+
+          }
 
 
         $this->response->setOutput($this->load->view('information/textbookfullset', $data));
     }
+
+
+
 }

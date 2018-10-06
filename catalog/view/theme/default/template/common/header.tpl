@@ -42,7 +42,6 @@
 <script>
 
 function toggleSearch(){
-  console.log('toggle');
   var element = document.getElementById("menu-search-box");
   element.classList.toggle("searchbox-open");
 }
@@ -104,7 +103,20 @@ function toggleSearch(){
             </div>
         </li>
 
-        <li><a href="<?php echo $textbook_fullset; ?>">Textbook</a></li>
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Education Material</a>
+
+          <div class="dropdown-menu">
+            <div class="dropdown-inner">
+              <ul class="list-unstyled">
+                <li><a href="<?php echo $textbook_link; ?>">Textbook</a></li>
+                <li><a href="<?php echo $assessment_link; ?>">Assessment</a></li>
+                <li><a href="<?php echo $story_book_link; ?>">Story book</a></li>
+                <li><a href="<?php echo $textbook_fullset; ?>">Textbook full set</a></li>
+                <li><a href="<?php echo $stationery_exercise_book_link; ?>">Stationery & Exercise book</a></li>
+              </ul>
+            </div>
+        </li>
+
         <li><a href="<?php echo $link_promotions; ?>">Promotions</a></li>
         <li><a href="<?php echo $link_promotions; ?>">Gallery</a></li>
 

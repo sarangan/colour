@@ -340,6 +340,7 @@ div.required .control-label:before {
 	line-height: 20px;
 	color: #333333;
 	font-size: 12px;
+	text-transform: uppercase;
 }
 #menu .dropdown-inner li a:hover {
 	color: #808080;
@@ -457,6 +458,12 @@ footer hr {
 
 .footer-right-bar{
 	 border-right: 1px solid #000000;
+}
+
+@media (max-width: 768px) {
+	.footer-right-bar{
+		 border-right: none;
+	}
 }
 
 .footer-txt-block{
@@ -837,6 +844,10 @@ footer h5 {
 	background-color: #000000;
 }
 
+.button-colour .button-colour-secondary{
+		background-color: #0091cb;
+}
+
 .btn-default{
 	border-radius: 0;
 	border: 1px solid #ddd;
@@ -1202,4 +1213,32 @@ a.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus, 
 
 .div-extra-wrapper{
 	margin: 20px 0;
+}
+
+.div-extra-wrapper-table{
+	margin: 40px 0 20px;
+}
+
+.textbookfullset-tbl{
+	color: #808080;
+	font-weight: 600;
+}
+
+.textbookfullset-tbl thead tr td {
+	color: #000000;
+	font-weight: 700;
+	font-size: 13px;
+}
+
+.textbookfullset-tbl .price-old{
+	color: #999;
+	text-decoration: line-through;
+	margin-left: 10px;
+}
+
+#total-price-textbookfullset{
+	font-size: 15px;
+	color:#000000;
+	padding: 0 10px;
+	font-weight: 800;
 }

@@ -40,7 +40,7 @@ class ControllerCommonFooter extends Controller {
 		$data['manufacturer'] = $this->url->link('product/manufacturer');
 		$data['voucher'] = $this->url->link('account/voucher', '', true);
 		$data['affiliate'] = $this->url->link('affiliate/account', '', true);
-		$data['special'] = $this->url->link('product/special');
+		$data['special'] = $this->url->link('product/search');
 		$data['account'] = $this->url->link('account/account', '', true);
 		$data['order'] = $this->url->link('account/order', '', true);
 		$data['wishlist'] = $this->url->link('account/wishlist', '', true);

@@ -76,6 +76,7 @@ class ControllerInformationNewarrivals extends Controller {
   					'tax'         => $tax,
   					'rating'      => $rating,
             'date_added'  => $result['date_added'],
+            'minimum'     => 1,
   					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])
   				);
   			}

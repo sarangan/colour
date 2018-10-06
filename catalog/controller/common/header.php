@@ -88,6 +88,11 @@ class ControllerCommonHeader extends Controller {
 		$data['link_new_arrivals'] = $this->url->link('information/newarrivals');
 		$data['link_promotions'] = $this->url->link('product/special');
 
+		$data['textbook_link'] = $this->url->link('information/material', 'filter=15');
+		$data['assessment_link'] = $this->url->link('information/material', 'filter=16');
+		$data['story_book_link'] = $this->url->link('information/material', 'filter=17');
+		$data['stationery_exercise_book_link'] = $this->url->link('information/material', 'filter=18');
+
 		// Menu
 		$this->load->model('catalog/category');
 

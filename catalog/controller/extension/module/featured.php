@@ -68,6 +68,7 @@ class ControllerExtensionModuleFeatured extends Controller {
 						'tax'         => $tax,
 						'rating'      => $rating,
 						'date_added'  => $product_info['date_added'],
+						'minimum'     => 1,
 						'href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id'])
 					);
 				}
