@@ -1242,3 +1242,39 @@ a.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus, 
 	padding: 0 10px;
 	font-weight: 800;
 }
+
+.sidebarFilter{
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	margin-bottom: 5px;
+}
+
+.sidebarFilter .panel-heading{
+	border: none;
+	background-color: #ffffff;
+	padding: 0;
+	border-bottom: 0;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.sidebarFilter .list-group-item.price-filter{
+	border: none;
+}
+
+.sidebarFilter .slider-handle.min-slider-handle.round, .sidebarFilter .slider-handle.max-slider-handle.round{
+	background-color: #000000;
+	background-image: none;
+	box-shadow: none;
+	border: none;
+	border-radius: 0;
+}
+
+.sidebarFilter-footer.panel-footer{
+	background-color: #ffffff;
+	border-top: 0;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	padding: 0;
+}

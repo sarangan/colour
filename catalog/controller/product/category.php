@@ -39,6 +39,12 @@ class ControllerProductCategory extends Controller {
 			$limit = $this->config->get($this->config->get('config_theme') . '_product_limit');
 		}
 
+		if (isset($this->request->get['pr'])) {
+			$pr = $this->request->get['pr'];
+		} else {
+			$pr = '';
+		}
+
 		$data['breadcrumbs'] = array();
 
 		$data['breadcrumbs'][] = array(
@@ -60,6 +66,11 @@ class ControllerProductCategory extends Controller {
 			if (isset($this->request->get['limit'])) {
 				$url .= '&limit=' . $this->request->get['limit'];
 			}
+
+			if (isset($this->request->get['pr'])) {
+				$url .= '&pr=' . $this->request->get['pr'];
+			}
+
 
 			$path = '';
 
@@ -148,6 +159,10 @@ class ControllerProductCategory extends Controller {
 				$url .= '&limit=' . $this->request->get['limit'];
 			}
 
+			if (isset($this->request->get['pr'])) {
+				$url .= '&pr=' . $this->request->get['pr'];
+			}
+
 			$data['categories'] = array();
 
 			$results = $this->model_catalog_category->getCategories($category_id);
@@ -164,11 +179,20 @@ class ControllerProductCategory extends Controller {
 				);
 			}
 
+			if (version_compare(VERSION, '2.2.0.0', '<') == true) {
+				$pcode = $this->currency->getCode();
+			} else {
+				$pcode = $this->session->data['currency'];
+			}
+			$currency_value = $this->currency->getValue($pcode);
+
 			$data['products'] = array();
 
 			$filter_data = array(
 				'filter_category_id' => $category_id,
 				'filter_filter'      => $filter,
+				'filter_price'      => $pr,
+				'currency_value'   => $currency_value,
 				'sort'               => $sort,
 				'order'              => $order,
 				'start'              => ($page - 1) * $limit,
@@ -178,6 +202,8 @@ class ControllerProductCategory extends Controller {
 			$product_total = $this->model_catalog_product->getTotalProducts($filter_data);
 
 			$results = $this->model_catalog_product->getProducts($filter_data);
+
+			
 
 			foreach ($results as $result) {
 				if ($result['image']) {
@@ -233,6 +259,10 @@ class ControllerProductCategory extends Controller {
 
 			if (isset($this->request->get['limit'])) {
 				$url .= '&limit=' . $this->request->get['limit'];
+			}
+
+			if (isset($this->request->get['pr'])) {
+				$url .= '&pr=' . $this->request->get['pr'];
 			}
 
 			$data['sorts'] = array();
@@ -307,6 +337,10 @@ class ControllerProductCategory extends Controller {
 				$url .= '&order=' . $this->request->get['order'];
 			}
 
+			if (isset($this->request->get['pr'])) {
+				$url .= '&pr=' . $this->request->get['pr'];
+			}
+
 			$data['limits'] = array();
 
 			$limits = array_unique(array($this->config->get($this->config->get('config_theme') . '_product_limit'), 25, 50, 75, 100));
@@ -337,6 +371,10 @@ class ControllerProductCategory extends Controller {
 
 			if (isset($this->request->get['limit'])) {
 				$url .= '&limit=' . $this->request->get['limit'];
+			}
+
+			if (isset($this->request->get['pr'])) {
+				$url .= '&pr=' . $this->request->get['pr'];
 			}
 
 			$pagination = new Pagination();
@@ -401,6 +439,10 @@ class ControllerProductCategory extends Controller {
 
 			if (isset($this->request->get['limit'])) {
 				$url .= '&limit=' . $this->request->get['limit'];
+			}
+
+			if (isset($this->request->get['pr'])) {
+				$url .= '&pr=' . $this->request->get['pr'];
 			}
 
 			$data['breadcrumbs'][] = array(
