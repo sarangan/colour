@@ -33,13 +33,16 @@
   <button type="button" id="button-filter" class="btn btn-primary"><?php echo $button_filter; ?></button>
 </div>
 <script>
-$("#price-slider").slider({
-	tooltip: 'always'
-});
-$(function() {
-$('#button-filter').on('click', function() {
+
+jQuery(function() {
+	
+	jQuery("#price-slider").slider({
+		tooltip: 'always'
+	});
+
+jQuery('#button-filter').on('click', function() {
 	pr = '';
-	price = $('#price-slider').val();
+	price = jQuery('#price-slider').val();
 	if(price!='')
 	{
 		pr = "&pr="+price;
