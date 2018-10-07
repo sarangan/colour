@@ -14,7 +14,7 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      
+
       <?php if ($products) { ?>
       <div class="row">
 
@@ -44,7 +44,7 @@
 
       <div class="row">
         <?php foreach ($products as $product) { ?>
-          <div class="product-layout product-grid col-lg-4 col-md-4 col-sm-6 col-xs-12">
+          <div class="product-layout product-grid col-lg-4 col-md-4 col-sm-6 col-xs-6">
             <div class="product-thumb">
 
               <?php if ($product['special']) { ?>

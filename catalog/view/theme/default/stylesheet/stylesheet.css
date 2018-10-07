@@ -280,6 +280,12 @@ div.required .control-label:before {
 	display: block;
 }
 
+@media (max-width: 767px) {
+	.search-box{
+		top: 100%;
+	}
+}
+
 /* menu */
 #menu {
 	background-color: #ffffff;
@@ -403,18 +409,20 @@ div.required .control-label:before {
 	#menu div.dropdown-menu {
 		margin-left: 0 !important;
 		padding-bottom: 10px;
-		background-color: rgba(0, 0, 0, 0.1);
+		background-color: #ffffff;
+		color: #808080;
 	}
 	#menu .dropdown-inner {
 		display: block;
 	}
 	#menu .dropdown-inner a {
 		width: 100%;
-		color: #fff;
+		color: #808080;
 	}
 	#menu .dropdown-menu a:hover,
 	#menu .dropdown-menu ul li a:hover {
-		background: rgba(0, 0, 0, 0.1);
+		background: #FFFFFF;
+		color: #000000;
 	}
 	#menu .see-all {
 		margin-top: 0;
