@@ -320,13 +320,21 @@ div.required .control-label:before {
 	color: #808080;
 }
 
+.navbar-nav>li{
+	position: relative;
+}
+
 #menu .nav .dropdown::after{
-	content: '\2304';
+	/* content: '\2304'; */
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	font-size: 15px;
+  content: "\f107";
 	padding: 2px;
 	position: absolute;
-  top: 5px;
+  top: 10px;
   right: -2px;
-  font-size: 15px;
+
 }
 
 #menu .dropdown-menu {
