@@ -3,6 +3,7 @@ class ControllerCommonHeader extends Controller {
 	public function index() {
 		// Analytics
 		$this->load->model('extension/extension');
+		$this->load->model('catalog/material');
 
 		$data['analytics'] = array();
 
@@ -88,10 +89,17 @@ class ControllerCommonHeader extends Controller {
 		$data['link_new_arrivals'] = $this->url->link('information/newarrivals');
 		$data['link_promotions'] = $this->url->link('product/special');
 
-		$data['textbook_link'] = $this->url->link('information/material', 'filter=15');
-		$data['assessment_link'] = $this->url->link('information/material', 'filter=16');
-		$data['story_book_link'] = $this->url->link('information/material', 'filter=17');
-		$data['stationery_exercise_book_link'] = $this->url->link('information/material', 'filter=18');
+		$results_edu_links = $this->model_catalog_material->getEduMaterials();
+
+		$data['edumaterial_links'] = array();
+
+		foreach ($results_edu_links as $results_edu_link) {
+			$data['edumaterial_links'][] = array(
+				'filter_id'     => $results_edu_link['filter_id'],
+				'name'          => $results_edu_link['name'],
+				'link'					=> $this->url->link('information/material', 'filter='. $results_edu_link['filter_id'])
+			);
+		}
 
 		// Menu
 		$this->load->model('catalog/category');

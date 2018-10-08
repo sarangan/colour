@@ -5,6 +5,7 @@ class ControllerInformationMaterial extends Controller {
         $this->load->language('product/category');
         $this->load->model('catalog/material');
         $this->load->model('tool/image');
+        $this->load->model('catalog/material');
 
         $filter = '';
 
@@ -14,32 +15,15 @@ class ControllerInformationMaterial extends Controller {
     			$filter = '';
     		}
 
-        switch ($filter) {
-          case 15:
-            $this->document->setTitle('Textbook');
-            $data['heading_title'] = 'Textbook';
-            break;
+        if($filter){
+          $filter_name_result = $this->model_catalog_material->getFilterName($filter);
+          if( !empty($filter_name_result) && count($filter_name_result) > 0 ){
+            $filter_name = $filter_name_result[0]['name'];
+            $this->document->setTitle($filter_name);
+            $data['heading_title'] = $filter_name;
 
-            case 16:
-              $this->document->setTitle('Assessment');
-              $data['heading_title'] = 'Assessment';
-              break;
-
-            case 17:
-                $this->document->setTitle('Story book');
-                $data['heading_title'] = 'Story book';
-                break;
-
-            case 18:
-              $this->document->setTitle('Stationery-Exercise book');
-              $data['heading_title'] = 'Stationery &amp; Exercise book';
-              break;
-
-          default:
-            # code...
-            break;
+          }
         }
-
 
         $data['text_refine'] = $this->language->get('text_refine');
   			$data['text_empty'] = $this->language->get('text_empty');

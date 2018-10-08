@@ -107,16 +107,23 @@ function toggleSearch(){
 
         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Education Material</a>
 
+
           <div class="dropdown-menu">
             <div class="dropdown-inner">
               <ul class="list-unstyled">
-                <li><a href="<?php echo $textbook_link; ?>">Textbook</a></li>
-                <li><a href="<?php echo $assessment_link; ?>">Assessment</a></li>
-                <li><a href="<?php echo $story_book_link; ?>">Story book</a></li>
+                <?php if( !empty($edumaterial_links) &&  count($edumaterial_links > 0) ) { ?>
+                  <?php foreach ($edumaterial_links as $edumaterial_link) { ?>
+                      <li><a href="<?php echo $edumaterial_link['link']; ?>"><?php echo $edumaterial_link['name'] ?></a></li>
+                  <?php } ?>
+                <?php } ?>
                 <li><a href="<?php echo $textbook_fullset; ?>">Textbook full set</a></li>
-                <li><a href="<?php echo $stationery_exercise_book_link; ?>">Stationery & Exercise book</a></li>
               </ul>
             </div>
+          </div>
+
+
+
+
         </li>
 
         <li><a href="<?php echo $link_promotions; ?>">Promotions</a></li>

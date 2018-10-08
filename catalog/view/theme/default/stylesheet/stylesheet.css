@@ -299,6 +299,28 @@ div.required .control-label:before {
 	border-radius: 0;
 }
 
+#menu .nav.navbar-nav{
+	width: 80%;
+	display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+@media (max-width: 990px) {
+	#menu .nav.navbar-nav{
+		display: inline-flex;
+	}
+}
+
+@media (max-width: 767px) {
+	#menu .nav.navbar-nav{
+		width: 100%;
+		display: block;
+	}
+}
+
+
+
 .common-home #menu.navbar{
 	margin-bottom: 0;
 }
