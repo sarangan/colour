@@ -97,9 +97,9 @@ function toggleSearch(){
             <div class="dropdown-inner">
               <ul class="list-unstyled">
                 <?php foreach ($categories as $category) { ?>
-                  <?php if (!$category['children']) { ?>
+                  <?php //if (!$category['children']) { ?>
                     <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-                  <?php }
+                  <?php //}
                 } ?>
               </ul>
             </div>
