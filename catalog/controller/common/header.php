@@ -87,7 +87,8 @@ class ControllerCommonHeader extends Controller {
 		$data['telephone'] = $this->config->get('config_telephone');
 		$data['textbook_fullset'] = $this->url->link('information/textbookfullset');
 		$data['link_new_arrivals'] = $this->url->link('information/newarrivals');
-		$data['link_promotions'] = $this->url->link('product/special');
+		$data['link_promotion'] = $this->url->link('product/special');
+		$data['link_gallery'] = $this->url->link('gallery/album');
 
 		$results_edu_links = $this->model_catalog_material->getEduMaterials();
 

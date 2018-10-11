@@ -16,12 +16,17 @@
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
       <h1 class="category-top-title"><?php echo $heading_title; ?></h1>
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <?php if ($geocode) { ?>
+        <?php if ($geocode)  {
+          $geoarr = explode(',',$geocode);
+          ?>
         <a href="https://maps.google.com/maps?q=<?php echo urlencode($geocode); ?>&hl=<?php echo $geocode_hl; ?>&t=m&z=15" target="_blank">
-          <img src="image/catalog/images/location.png" alt="8 Kaki Bukit Rd 2" class="img-category-banner"/>
+          <!-- <img src="image/catalog/images/location.png" alt="8 Kaki Bukit Rd 2" class="img-category-banner"/> -->
+          <iframe src="<?php echo 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.730959630194!2d' . $geoarr[0] .'!3d'. $geoarr[1] .'!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwMjAnMTUuNyJOIDEwM8KwNTMnNTQuMiJF!5e0!3m2!1sen!2ssg!4v1539223514247'; ?> " width="100%" height="auto" class="img-category-banner" frameborder="0" style="border:0" allowfullscreen></iframe>
+
         </a>
       <?php } else { ?>
         <img src="image/catalog/images/location.png" alt="8 Kaki Bukit Rd 2" class="img-category-banner"/>
+
       <?php } ?>
       </div>
 
@@ -35,7 +40,7 @@
             </div>
             <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
               <strong style="color:#f21371;"><?php echo $store; ?></strong><br/>
-              <address>
+              <address class="contact-text">
                 <?php echo $address; ?>
               </address>
             </div>
@@ -45,7 +50,7 @@
             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                 <strong><?php echo $text_telephone; ?></strong>
             </div>
-            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 contact-text">
               <?php echo $telephone; ?>
             </div>
         </div>
@@ -55,7 +60,7 @@
               <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                   <strong><?php echo $text_fax; ?></strong>
               </div>
-              <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+              <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 contact-text">
                 <?php echo $fax; ?>
               </div>
           </div>
@@ -66,8 +71,8 @@
               <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                   <strong>Email</strong>
               </div>
-              <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
-                <?php echo $comment; ?>
+              <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 contact-text">
+                <a class="contact-text" href="mailto:<?php echo $comment; ?>" target="_top"><?php echo $comment; ?></a>
               </div>
           </div>
         <?php } ?>
@@ -80,7 +85,7 @@
           <fieldset>
             <strong><?php echo $text_contact; ?></strong>
 
-            <div class="row" style="margin-bottom:10px;">
+            <div class="row" style="margin-bottom:10px; margin-top: 10px;">
               <div class="col-sm-6 col-xs-12">
                 <div class="required">
                     <input type="text" name="name" value="<?php echo $name; ?>" id="input-name" class="form-control" placeholder="<?php echo $entry_name; ?>"/>
@@ -114,8 +119,9 @@
           </fieldset>
 
           <div class="buttons">
-            <div class="pull-right">
-              <input class="btn btn-primary button-colour" type="submit" value="<?php echo $button_submit; ?>" />
+            <div>
+              <input class="btn btn-primary button-colour contact-btn" type="submit" value="<?php echo $button_submit; ?>" />
+              <input class="btn btn-primary button-colour contact-btn" type="reset" value="CLEAR" />
             </div>
           </div>
 

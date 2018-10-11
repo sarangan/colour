@@ -25,10 +25,11 @@
 
             <ul class="thumbnails product-thumbnails-wrapper">
               <?php if ($images) { ?>
-              <?php foreach ($images as $image) { ?>
-              <li class="image-additional"><a class="thumbnail" href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"> <img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
+                <?php foreach ($images as $image) { ?>
+                  <li class="image-additional"><a class="thumbnail product-thumbnail-ancher" href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"> <img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
+                <?php } ?>
               <?php } ?>
-              <?php } ?>
+
             </ul>
 
             <?php if ($thumb) { ?>
@@ -37,6 +38,10 @@
                   <span class="product-label label-sale">Sale</span>
                 <?php }?>
 
+                <?php if (count($images) > 0 && false ) { ?>
+                    <span class="product-img-swiper swiper-left" id="go-left"><i class="fas fa-angle-left"></i></span>
+                    <span class="product-img-swiper swiper-right"  id="go-right"><i class="fas fa-angle-right"></i></span>
+                <?php } ?>
                 <?php
                       if ( $date_added ) {
                         $dStart = new DateTime($date_added);
@@ -57,6 +62,16 @@
                 ?>
 
                 <a class="thumbnail remove-product-thumbnail-border" href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
+
+                <?php if ($images && false )  { ?>
+                  <?php foreach ($images as $image) { ?>
+                      <a class="thumbnail remove-product-thumbnail-border product-slider fade" href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
+                  <?php } ?>
+                <?php } ?>
+
+
+
+
               </div>
             <?php } ?>
 
@@ -147,7 +162,7 @@
         <?php $class = 'col-sm-5'; ?>
         <?php } ?>
         <div class="<?php echo $class; ?>">
-          <div class="btn-group pull-right">
+          <div class="btn-group pull-right hide-controls">
             <button type="button" data-toggle="tooltip" class="btn btn-default product-action-btn" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product_id; ?>');"><i class="fa fa-heart"></i></button>
             <button type="button" data-toggle="tooltip" class="btn btn-default product-action-btn" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product_id; ?>');"><i class="fas fa-exchange-alt"></i></button>
           </div>
@@ -354,7 +369,7 @@
                 }
             ?>
 
-            <li><?php echo $text_category . ' ' . $categories_text; ?></li>
+            <li><?php echo ($categories_text)? $text_category . ' ' . $categories_text : ''; ?></li>
 
             <?php if ($manufacturer) { ?>
             <li><?php echo $text_manufacturer; ?> <a href="<?php echo $manufacturers; ?>"><?php echo $manufacturer; ?></a></li>
@@ -686,5 +701,41 @@ $(document).ready(function() {
 		}
 	});
 });
+
+
+//my code for image thumbnail
+// $(document).ready(function() {
+//
+//   $('go-left').click(function(){
+//       console.log('clock');
+//   });
+//
+// });
+
+// var slideIndex = 1;
+// showSlides(slideIndex);
+// // Next/previous controls
+// function plusSlides(n) {
+//   showSlides(slideIndex += n);
+// }
+//
+// // Thumbnail image controls
+// function currentSlide(n) {
+//   showSlides(slideIndex = n);
+// }
+//
+// function showSlides(n) {
+//   console.log(n);
+//   var i;
+//   var slides = document.getElementsByClassName("product-slider");
+//   if (n > slides.length) {slideIndex = 1}
+//   if (n < 1) {slideIndex = slides.length}
+//   for (i = 0; i < slides.length; i++) {
+//       slides[i].style.display = "none";
+//   }
+//   slides[slideIndex-1].style.display = "block";
+// }
+
+
 //--></script>
 <?php echo $footer; ?>

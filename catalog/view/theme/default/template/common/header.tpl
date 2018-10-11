@@ -17,7 +17,7 @@
 <?php if ($keywords) { ?>
 <meta name="keywords" content= "<?php echo $keywords; ?>" />
 <?php } ?>
-<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700,800" rel="stylesheet">
 <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
 <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
@@ -126,8 +126,8 @@ function toggleSearch(){
 
         </li>
 
-        <li><a href="<?php echo $link_promotions; ?>">Promotions</a></li>
-        <li><a href="<?php echo $link_promotions; ?>">Gallery</a></li>
+        <li><a href="<?php echo $link_promotion; ?>">Promotions</a></li>
+        <li><a href="<?php echo $link_gallery; ?>">Gallery</a></li>
 
         <?php if(false){ ?>
         <?php foreach ($categories as $category ) { ?>
