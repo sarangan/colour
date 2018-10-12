@@ -166,7 +166,7 @@
         <label class="control-label" for="input-payment-address-2"><?php echo $entry_address_2; ?></label>
         <input type="text" name="address_2" value="<?php echo $address_2; ?>" placeholder="<?php echo $entry_address_2; ?>" id="input-payment-address-2" class="form-control" />
       </div>
-      <div class="form-group required">
+      <div class="form-group">
         <label class="control-label" for="input-payment-city"><?php echo $entry_city; ?></label>
         <input type="text" name="city" value="<?php echo $city; ?>" placeholder="<?php echo $entry_city; ?>" id="input-payment-city" class="form-control" />
       </div>
@@ -302,7 +302,7 @@
       <?php } ?>
       <?php } ?>
     </fieldset>
-    
+
     <?php echo $captcha; ?>
   </div>
 </div>

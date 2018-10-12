@@ -54,7 +54,7 @@
         <input type="text" name="address_2" value="" placeholder="<?php echo $entry_address_2; ?>" id="input-payment-address-2" class="form-control" />
       </div>
     </div>
-    <div class="form-group required">
+    <div class="form-group">
       <label class="col-sm-2 control-label" for="input-payment-city"><?php echo $entry_city; ?></label>
       <div class="col-sm-10">
         <input type="text" name="city" value="" placeholder="<?php echo $entry_city; ?>" id="input-payment-city" class="form-control" />

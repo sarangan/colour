@@ -29,7 +29,7 @@
       <input type="text" name="address_2" value="<?php echo $address_2; ?>" placeholder="<?php echo $entry_address_2; ?>" id="input-shipping-address-2" class="form-control" />
     </div>
   </div>
-  <div class="form-group required">
+  <div class="form-group">
     <label class="col-sm-2 control-label" for="input-shipping-city"><?php echo $entry_city; ?></label>
     <div class="col-sm-10">
       <input type="text" name="city" value="<?php echo $city; ?>" placeholder="<?php echo $entry_city; ?>" id="input-shipping-city" class="form-control" />

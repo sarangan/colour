@@ -162,9 +162,9 @@ class ControllerCheckoutRegister extends Controller {
 				$json['error']['address_1'] = $this->language->get('error_address_1');
 			}
 
-			if ((utf8_strlen(trim($this->request->post['city'])) < 2) || (utf8_strlen(trim($this->request->post['city'])) > 128)) {
-				$json['error']['city'] = $this->language->get('error_city');
-			}
+			// if ((utf8_strlen(trim($this->request->post['city'])) < 2) || (utf8_strlen(trim($this->request->post['city'])) > 128)) {
+			// 	$json['error']['city'] = $this->language->get('error_city');
+			// }
 
 			$this->load->model('localisation/country');
 

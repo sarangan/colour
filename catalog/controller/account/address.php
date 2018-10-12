@@ -37,7 +37,7 @@ class ControllerAccountAddress extends Controller {
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_account_address->addAddress($this->request->post);
-			
+
 			$this->session->data['success'] = $this->language->get('text_add');
 
 			// Add to activity log
@@ -74,7 +74,7 @@ class ControllerAccountAddress extends Controller {
 		$this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
 
 		$this->load->model('account/address');
-		
+
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_account_address->editAddress($this->request->get['address_id'], $this->request->post);
 
@@ -154,7 +154,7 @@ class ControllerAccountAddress extends Controller {
 					'customer_id' => $this->customer->getId(),
 					'name'        => $this->customer->getFirstName() . ' ' . $this->customer->getLastName()
 				);
-				
+
 				$this->model_account_activity->addActivity('address_delete', $activity_data);
 			}
 
@@ -363,7 +363,7 @@ class ControllerAccountAddress extends Controller {
 		} else {
 			$data['error_custom_field'] = array();
 		}
-		
+
 		if (!isset($this->request->get['address_id'])) {
 			$data['action'] = $this->url->link('account/address/add', '', true);
 		} else {
@@ -497,9 +497,9 @@ class ControllerAccountAddress extends Controller {
 			$this->error['address_1'] = $this->language->get('error_address_1');
 		}
 
-		if ((utf8_strlen(trim($this->request->post['city'])) < 2) || (utf8_strlen(trim($this->request->post['city'])) > 128)) {
-			$this->error['city'] = $this->language->get('error_city');
-		}
+		// if ((utf8_strlen(trim($this->request->post['city'])) < 2) || (utf8_strlen(trim($this->request->post['city'])) > 128)) {
+		// 	$this->error['city'] = $this->language->get('error_city');
+		// }
 
 		$this->load->model('localisation/country');
 
