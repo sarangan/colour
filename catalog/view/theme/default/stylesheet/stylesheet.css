@@ -250,6 +250,7 @@ div.required .control-label:before {
 .cart-menu-btn{
 		background-color: #ffffff;
 		border: none;
+		margin-right: 10px;
 }
 
 .top-menu-cart-text{
@@ -1128,9 +1129,10 @@ h2.price {
 	background-color: #ffffff;
 	color: #808080;
 	line-height: 38px;
-	font-weight: bold;
+	/* font-weight: bold; */
 	text-align: center;
 	text-transform: uppercase;
+	letter-spacing: 0.5px;
 }
 .product-thumb .button-group button + button {
 	width: 20%;
@@ -1511,4 +1513,31 @@ select.form-control, textarea.form-control, input[type="text"].form-control, inp
 .contact-btn{
 	width: 120px;
 	margin-right: 10px;
+}
+
+.shopping-text{
+	font-weight: 600;
+	color: #000000;
+	letter-spacing: 0.5px;
+	padding: 0 5px;
+	text-transform: uppercase;
+}
+
+.shopping-cart-total{
+	font-size: 12px;
+	font-weight: 800;
+	color: #ffffff;
+	background-color: #000000;
+	border-radius: 50%;
+	height: 18px;
+	width: 18px;
+	display: inline-block;
+	position: absolute;
+	top: -6px;
+	right: 0;
+	text-align: center;
+}
+
+.shopping-text .hide-cart-total{
+	display: none;
 }

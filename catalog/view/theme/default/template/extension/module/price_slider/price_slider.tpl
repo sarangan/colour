@@ -35,14 +35,14 @@
 <script>
 
 jQuery(function() {
-	
-	jQuery("#price-slider").slider({
+
+	$("#price-slider").slider({
 		tooltip: 'always'
 	});
 
-jQuery('#button-filter').on('click', function() {
+	$('#button-filter').on('click', function() {
 	pr = '';
-	price = jQuery('#price-slider').val();
+	price = $('#price-slider').val();
 	if(price!='')
 	{
 		pr = "&pr="+price;
