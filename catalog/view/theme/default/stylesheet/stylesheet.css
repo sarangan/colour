@@ -601,6 +601,13 @@ footer h5 {
 	font-weight: normal;
 }
 
+@media (max-width: 450px) {
+	.footer-payment-icons{
+		display: none;
+	}
+}
+
+
 /* alert */
 .alert {
 	padding: 8px 14px 8px 14px;
@@ -1540,4 +1547,12 @@ select.form-control, textarea.form-control, input[type="text"].form-control, inp
 
 .shopping-text .hide-cart-total{
 	display: none;
+}
+
+@media(max-width: 450px){
+
+	.col-xs-6{
+			width: 100%;
+	}
+
 }
