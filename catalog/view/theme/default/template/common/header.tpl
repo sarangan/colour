@@ -105,11 +105,21 @@ function toggleSearch(){
           <div class="dropdown-menu">
             <div class="dropdown-inner">
               <ul class="list-unstyled">
-                <?php foreach ($categories as $category) { ?>
-                  <?php //if (!$category['children']) { ?>
-                    <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-                  <?php //}
-                } ?>
+                <?php
+
+                foreach ($categories as $category) {
+                    if( strtoupper($category['name']) == strtoupper("Products") ){
+                      $children = $category['children'];
+                        foreach ($children as $child) {
+
+                          if (!empty($child['name']) ) { ?>
+
+                            <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+                <?php
+                          }
+                       }
+                    }
+              } ?>
               </ul>
             </div>
         </li>
@@ -120,11 +130,22 @@ function toggleSearch(){
           <div class="dropdown-menu">
             <div class="dropdown-inner">
               <ul class="list-unstyled">
-                <?php if( !empty($edumaterial_links) &&  count($edumaterial_links > 0) ) { ?>
-                  <?php foreach ($edumaterial_links as $edumaterial_link) { ?>
-                      <li><a href="<?php echo $edumaterial_link['link']; ?>"><?php echo $edumaterial_link['name'] ?></a></li>
-                  <?php } ?>
-                <?php } ?>
+                <?php
+
+                  foreach ($categories as $category) {
+                      if( strtoupper($category['name']) == strtoupper("Education Material") ){
+                        $children = $category['children'];
+                          foreach ($children as $child) {
+
+                            if (!empty($child['name']) ) { ?>
+
+                              <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+                  <?php
+                            }
+                         }
+                      }
+                } ?>
+
                 <li><a href="<?php echo $textbook_fullset; ?>">Textbook full set</a></li>
               </ul>
             </div>
