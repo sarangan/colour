@@ -1040,12 +1040,12 @@ div.list-group{
 
 .list-group a{
 	letter-spacing: 0.5px;
-	text-transform: lowercase;
+	text-transform: capitalize;
 }
 
-.list-group a::first-letter{
+/* .list-group a::first-letter{
 	text-transform: uppercase;
-}
+} */
 
 .sidebar-category-title{
 	font-size: 14px;

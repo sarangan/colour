@@ -118,6 +118,8 @@ class ControllerCommonHeader extends Controller {
 
 				$children = $this->model_catalog_category->getCategories($category['category_id']);
 
+				$filters_data = $this->model_catalog_category->getCategoryFilters($category['category_id']);
+
 				foreach ($children as $child) {
 					$filter_data = array(
 						'filter_category_id'  => $child['category_id'],
@@ -135,7 +137,8 @@ class ControllerCommonHeader extends Controller {
 					'name'     => $category['name'],
 					'children' => $children_data,
 					'column'   => $category['column'] ? $category['column'] : 1,
-					'href'     => $this->url->link('product/category', 'path=' . $category['category_id'])
+					'href'     => $this->url->link('product/category', 'path=' . $category['category_id']),
+					'filter' => $filters_data
 				);
 			}
 		}

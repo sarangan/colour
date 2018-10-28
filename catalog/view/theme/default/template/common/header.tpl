@@ -108,17 +108,22 @@ function toggleSearch(){
                 <?php
 
                 foreach ($categories as $category) {
-                    if( strtoupper($category['name']) == strtoupper("Products") ){
-                      $children = $category['children'];
-                        foreach ($children as $child) {
 
-                          if (!empty($child['name']) ) { ?>
+                    if( !empty($category['filter']) ){
 
-                            <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
-                <?php
+                      $filter_name = $category['filter'][0]['filter'][0]['name'];
+
+                          if( strtoupper($filter_name) == strtoupper("Products") ){
+
+                                  if (!empty($category['name']) ) { ?>
+
+                                  <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+                      <?php
+                                }
+
                           }
-                       }
-                    }
+
+                        }
               } ?>
               </ul>
             </div>
@@ -132,19 +137,24 @@ function toggleSearch(){
               <ul class="list-unstyled">
                 <?php
 
-                  foreach ($categories as $category) {
-                      if( strtoupper($category['name']) == strtoupper("Education Material") ){
-                        $children = $category['children'];
-                          foreach ($children as $child) {
+                foreach ($categories as $category) {
 
-                            if (!empty($child['name']) ) { ?>
+                    if( !empty($category['filter']) ){
 
-                              <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
-                  <?php
-                            }
-                         }
-                      }
-                } ?>
+                      $filter_name = $category['filter'][0]['filter'][0]['name'];
+
+                          if( strtoupper($filter_name) == strtoupper("Education Material") ){
+
+                                  if (!empty($category['name']) ) { ?>
+
+                                  <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+                      <?php
+                                }
+
+                          }
+
+                        }
+              } ?>
 
                 <li><a href="<?php echo $textbook_fullset; ?>">Textbook full set</a></li>
               </ul>
