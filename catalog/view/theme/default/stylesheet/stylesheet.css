@@ -1556,3 +1556,34 @@ select.form-control, textarea.form-control, input[type="text"].form-control, inp
 	}
 
 }
+
+
+ul.pagination{
+	border-radius: 0px;
+}
+
+.pagination>li:first-child>a, .pagination>li:first-child>span{
+	border-radius: 0px;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 2;
+    color: #fff;
+    cursor: default;
+    background-color: #000000;
+		border: none;
+    border-color: #000000;
+}
+
+.pagination>li>a, .pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #000000;
+    text-decoration: none;
+    background-color: #fff;
+    border: none;
+		font-weight: 700;
+}

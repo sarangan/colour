@@ -86,13 +86,6 @@ class ModelCatalogMaterial extends Model {
 	}
 
 	public function getProducts($school ='', $level = '', $stream = '') {
-		$sql = "SELECT p.product_id, (SELECT GROUP_CONCAT(" . DB_PREFIX . "product_filter.filter_id) FROM " . DB_PREFIX . "product_filter  INNER JOIN " . DB_PREFIX . "filter ON " . DB_PREFIX . "filter.filter_id = ". DB_PREFIX . "product_filter.filter_id INNER JOIN " . DB_PREFIX . "filter_group_description ON " . DB_PREFIX . "filter.filter_group_id = " .  DB_PREFIX . "filter_group_description.filter_group_id  WHERE " . DB_PREFIX . "filter_group_description.name IN ('Schools', 'Levels', 'Streams') AND " . DB_PREFIX . "product_filter.product_id=p.product_id) pfss, (SELECT AVG(rating) AS total FROM " . DB_PREFIX . "review r1 WHERE r1.product_id = p.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating, (SELECT price FROM " . DB_PREFIX . "product_discount pd2 WHERE pd2.product_id = p.product_id AND pd2.customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "' AND pd2.quantity = '1' AND ((pd2.date_start = '0000-00-00' OR pd2.date_start < NOW()) AND (pd2.date_end = '0000-00-00' OR pd2.date_end > NOW())) ORDER BY pd2.priority ASC, pd2.price ASC LIMIT 1) AS discount, (SELECT price FROM " . DB_PREFIX . "product_special ps WHERE ps.product_id = p.product_id AND ps.customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) ORDER BY ps.priority ASC, ps.price ASC LIMIT 1) AS special";
-
-    $sql .= " FROM " . DB_PREFIX . "product p";
-
-    $sql .= " LEFT JOIN " . DB_PREFIX . "product_filter pf ON (p.product_id = pf.product_id) ";
-
-		$sql .= " LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "'";
 
     $having_filter = array();
 
@@ -108,6 +101,19 @@ class ModelCatalogMaterial extends Model {
       $having_filter[]= $stream;
     }
 
+    asort($having_filter); // fixing auto ordering having numbers
+
+
+		$sql = "SELECT p.product_id, (SELECT GROUP_CONCAT(" . DB_PREFIX . "product_filter.filter_id) FROM " . DB_PREFIX . "product_filter  INNER JOIN " . DB_PREFIX . "filter ON " . DB_PREFIX . "filter.filter_id = ". DB_PREFIX . "product_filter.filter_id INNER JOIN " . DB_PREFIX . "filter_group_description ON " . DB_PREFIX . "filter.filter_group_id = " .  DB_PREFIX . "filter_group_description.filter_group_id  WHERE " . DB_PREFIX . "filter_group_description.name IN ('Schools', 'Levels', 'Streams') AND " . DB_PREFIX . "product_filter.product_id=p.product_id AND " . DB_PREFIX .  "filter.filter_id in (" . implode(',', $having_filter) . ")  ) pfss, (SELECT AVG(rating) AS total FROM " . DB_PREFIX . "review r1 WHERE r1.product_id = p.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating, (SELECT price FROM " . DB_PREFIX . "product_discount pd2 WHERE pd2.product_id = p.product_id AND pd2.customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "' AND pd2.quantity = '1' AND ((pd2.date_start = '0000-00-00' OR pd2.date_start < NOW()) AND (pd2.date_end = '0000-00-00' OR pd2.date_end > NOW())) ORDER BY pd2.priority ASC, pd2.price ASC LIMIT 1) AS discount, (SELECT price FROM " . DB_PREFIX . "product_special ps WHERE ps.product_id = p.product_id AND ps.customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) ORDER BY ps.priority ASC, ps.price ASC LIMIT 1) AS special";
+
+    $sql .= " FROM " . DB_PREFIX . "product p";
+
+    $sql .= " LEFT JOIN " . DB_PREFIX . "product_filter pf ON (p.product_id = pf.product_id) ";
+
+		$sql .= " LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "'";
+
+
+
     $sql .= " AND pf.filter_id in (" . implode(',', $having_filter)  . ") ";
 
 		$sql .= " GROUP BY p.product_id";
@@ -119,6 +125,7 @@ class ModelCatalogMaterial extends Model {
 
 		$product_data = array();
 
+    //var_dump($sql);
 
 		$query = $this->db->query($sql);
 
