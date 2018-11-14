@@ -120,8 +120,10 @@ class ModelCatalogMaterial extends Model {
 
     $sql .= " having pfss = '" . implode(',', $having_filter)  . "'";
 
-		$sql .= " ORDER BY p.sort_order";
-    $sql .= " ASC, LCASE(pd.name) ASC";
+		// $sql .= " ORDER BY p.sort_order";
+    // $sql .= " ASC, LCASE(pd.name) ASC";
+
+    $sql .= " ORDER BY LCASE(pd.name) ASC";
 
 		$product_data = array();
 
