@@ -812,6 +812,7 @@ footer h5 {
 }
 .product-thumb .image {
 	text-align: center;
+	padding-top: 10px;
 }
 .product-thumb .image a {
 	display: block;
