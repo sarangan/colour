@@ -159,7 +159,7 @@
 
             <div>
               <div class="caption">
-                <h4><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>
+                <h4><a href="<?php echo $product['href']; ?>" class="overlay-product-title"><?php echo $product['name']; ?></a></h4>
 
                 <?php if ($product['price']) { ?>
                 <p class="price">
