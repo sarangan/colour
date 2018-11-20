@@ -17,6 +17,8 @@ class ControllerCommonCart extends Controller {
 			'total'  => &$total
 		);
 
+		$data['link_clearcart'] = $this->url->link('checkout/cart/clearmycart');
+
 		// Display prices
 		if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
 			$sort_order = array();

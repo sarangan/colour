@@ -23,6 +23,8 @@ class ControllerInformationTextbookfullset extends Controller {
 
         $data['action'] = $this->url->link('information/textbookfullset');
 
+        $data['post_action'] = $this->url->link('checkout/cart/addbulk');
+
         $data['column_left'] = $this->load->controller('common/column_left');
   			$data['column_right'] = $this->load->controller('common/column_right');
   			$data['content_top'] = $this->load->controller('common/content_top');

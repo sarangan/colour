@@ -17,6 +17,8 @@ class ControllerCheckoutCart extends Controller {
 			'text' => $this->language->get('heading_title')
 		);
 
+		$data['link_clearcart'] = $this->url->link('checkout/cart/clearmycart');
+
 		if ($this->cart->hasProducts() || !empty($this->session->data['vouchers'])) {
 			$data['heading_title'] = $this->language->get('heading_title');
 
@@ -499,4 +501,123 @@ class ControllerCheckoutCart extends Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+
+
+		public function clearcart(){
+
+		    $this->load->language('checkout/cart');
+		    $json = array();
+		    $this->cart->clear();
+				$totals = array();
+				$total = 0;
+
+		    unset($this->session->data['vouchers']);
+		    unset($this->session->data['shipping_method']);
+		    unset($this->session->data['shipping_methods']);
+		    unset($this->session->data['payment_method']);
+		    unset($this->session->data['payment_methods']);
+		    unset($this->session->data['reward']);
+
+		    //$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total));
+
+				$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+				$json['total_new'] = $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0) ;
+
+				$this->response->addHeader('Content-Type: application/json');
+				$this->response->setOutput(json_encode($json));
+
+		}
+
+		public function clearmycart(){
+
+			$this->load->language('checkout/cart');
+			$json = array();
+			$this->cart->clear();
+			$total = 0;
+
+			unset($this->session->data['vouchers']);
+			unset($this->session->data['shipping_method']);
+			unset($this->session->data['shipping_methods']);
+			unset($this->session->data['payment_method']);
+			unset($this->session->data['payment_methods']);
+			unset($this->session->data['reward']);
+
+			$this->response->redirect($this->url->link('checkout/cart'));
+
+		}
+
+
+		public function addbulk() {
+			$this->load->language('checkout/cart');
+
+			$main_json = array();
+			$product_ids = array();
+			$quantity = 1; // default add 1 product
+
+
+			if (isset($this->request->post['textbookfullsetchk'])) {
+				 $product_ids = $this->request->post['textbookfullsetchk'];
+				 //$product_ids = json_decode($product_ids_str);
+			}
+
+			$this->load->model('catalog/product');
+
+			foreach($product_ids as $selected){
+
+				$product_id = explode(';', $selected)[0];
+
+				$json = array();
+
+				$product_info = $this->model_catalog_product->getProduct($product_id);
+
+				if ($product_info) {
+					if ($quantity >= $product_info['minimum']) {
+						$quantity = $quantity;
+					} else {
+						$quantity = $product_info['minimum'] ? $product_info['minimum'] : 1;
+					}
+
+					$option = array(); // we dont have any option by default
+
+					$product_options = $this->model_catalog_product->getProductOptions($product_id);
+
+					foreach ($product_options as $product_option) {
+						if ($product_option['required'] && empty($option[$product_option['product_option_id']])) {
+							$json['error']['option'][$product_option['product_option_id']] = sprintf($this->language->get('error_required'), $product_option['name']);
+						}
+					}
+
+					$recurring_id = 0; // we dont have any recurring_id by default
+
+					$recurrings = $this->model_catalog_product->getProfiles($product_id);
+
+					if ($recurrings) {
+						$recurring_ids = array();
+
+						foreach ($recurrings as $recurring) {
+							$recurring_ids[] = $recurring['recurring_id'];
+						}
+
+						if (!in_array($recurring_id, $recurring_ids)) {
+							$json['error']['recurring'] = $this->language->get('error_recurring_required');
+						}
+					}
+
+					if (!$json) {
+						$this->cart->add($product_id, $quantity, $option, $recurring_id);
+					}
+
+
+				}
+
+
+
+			}// end loop
+
+			$this->response->redirect($this->url->link('checkout/cart'));
+
+
+		}
+
+
 }

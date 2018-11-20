@@ -1,28 +1,28 @@
 <?php
 // HTTP
-define('HTTP_SERVER', 'http://madforvisuals.com/colour/');
+define('HTTP_SERVER', 'http://www.gotobookshop.com/');
 
 // HTTPS
-define('HTTPS_SERVER', 'https://madforvisuals.com/colour/');
+define('HTTPS_SERVER', 'http://www.gotobookshop.com/');
 
 // DIR
-define('DIR_APPLICATION', '/home/madforvi/public_html/colour/catalog/');
-define('DIR_SYSTEM', '/home/madforvi/public_html/colour/system/');
-define('DIR_IMAGE', '/home/madforvi/public_html/colour/image/');
-define('DIR_LANGUAGE', '/home/madforvi/public_html/colour/catalog/language/');
-define('DIR_TEMPLATE', '/home/madforvi/public_html/colour/catalog/view/theme/');
-define('DIR_CONFIG', '/home/madforvi/public_html/colour/system/config/');
-define('DIR_CACHE', '/home/madforvi/public_html/colour/system/storage/cache/');
-define('DIR_DOWNLOAD', '/home/madforvi/public_html/colour/system/storage/download/');
-define('DIR_LOGS', '/home/madforvi/public_html/colour/system/storage/logs/');
-define('DIR_MODIFICATION', '/home/madforvi/public_html/colour/system/storage/modification/');
-define('DIR_UPLOAD', '/home/madforvi/public_html/colour/system/storage/upload/');
+define('DIR_APPLICATION', '/var/app/current/catalog/');
+define('DIR_SYSTEM', '/var/app/current/system/');
+define('DIR_IMAGE', '/var/app/current/image/');
+define('DIR_LANGUAGE', '/var/app/current/catalog/language/');
+define('DIR_TEMPLATE', '/var/app/current/catalog/view/theme/');
+define('DIR_CONFIG', '/var/app/current/system/config/');
+define('DIR_CACHE', '/var/app/current/system/storage/cache/');
+define('DIR_DOWNLOAD', '/var/app/current/system/storage/download/');
+define('DIR_LOGS', '/var/app/current/system/storage/logs/');
+define('DIR_MODIFICATION', '/var/app/current/system/storage/modification/');
+define('DIR_UPLOAD', '/var/app/current/system/storage/upload/');
 
 // DB
 define('DB_DRIVER', 'mysqli');
-define('DB_HOSTNAME', 'localhost');
-define('DB_USERNAME', 'madforvi_colour');
+define('DB_HOSTNAME', 'aa11i0tdhu4gh0a.cjwl2stw5anz.ap-southeast-1.rds.amazonaws.com');
+define('DB_USERNAME', 'colourswag');
 define('DB_PASSWORD', '46[pT9hL79{f');
-define('DB_DATABASE', 'madforvi_colour');
+define('DB_DATABASE', 'colour_db');
 define('DB_PORT', '3306');
 define('DB_PREFIX', 'oc_');

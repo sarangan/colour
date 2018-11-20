@@ -80,7 +80,7 @@
 
       </form>
 
-
+      <form method="post" action="<?php echo $post_action; ?>">
       <div class="row div-extra-wrapper-table">
 
         <?php if($products && count($products)) { ?>
@@ -152,7 +152,7 @@
 
             <div class="col-sm-3 pull-right">
 
-              <button type="button" id="btn-add-cart-textbook-fullset" class="button-colour button-colour-secondary" style="width: 100%; padding: 7px;">Add to cart</button>
+                <button type="submit" id="btn-add-cart-textbook-fullset" class="button-colour button-colour-secondary" style="width: 100%; padding: 7px;">Add to cart</button>
 
             </div>
 
@@ -170,6 +170,8 @@
 
 
       </div>
+
+        </form>
 
 
       <?php echo $content_bottom; ?>
@@ -224,13 +226,20 @@ $(function() {
   });
 
 
-  $('#btn-add-cart-textbook-fullset').click(function() {
+  /*$('#btn-add-cart-textbook-fullset').click(function() {
 
+    // for(var i = 0, l = selected_checkboxes.length; i < l ; i++ ){
+    //   //cart.add( selected_checkboxes[i].id.toString() , 1);
+    //
+    // }
+
+    var product_ids = [];
     for(var i = 0, l = selected_checkboxes.length; i < l ; i++ ){
-      cart.add( selected_checkboxes[i].id.toString() , 1);
+      product_ids.push( selected_checkboxes[i].id );
     }
-
-  });
+    console.log(product_ids);
+    cart.addbulk(product_ids);
+  });*/
 
 
   function selectAllCkh(chk_value){
