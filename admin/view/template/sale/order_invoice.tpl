@@ -48,8 +48,9 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <td style="width: 50%;"><b><?php echo $text_payment_address; ?></b></td>
-          <td style="width: 50%;"><b><?php echo $text_shipping_address; ?></b></td>
+          <td style="width: 40%;"><b><?php echo $text_payment_address; ?></b></td>
+          <td style="width: 40%;"><b><?php echo $text_shipping_address; ?></b></td>
+          <td style="width: 20%;"><b>Contact</b></td>
         </tr>
       </thead>
       <tbody>
@@ -60,6 +61,7 @@
           <td><address>
             <?php echo $order['shipping_address']; ?>
             </address></td>
+            <td><?php echo $order['telephone']; ?><br/><?php echo $order['email']; ?></td>
         </tr>
       </tbody>
     </table>
